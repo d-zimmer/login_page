@@ -1,0 +1,11 @@
+python -m venv login                                -- Creating A Virtual Enviroment
+source login/Scripts/activate                       -- Activating Virtual Env
+deactivate                                          -- Deactivate Virtual Env
+pip install django djangorestframework              -- Installing two Django Dependencies
+django-admin startproject projectname               -- Creating Project Files
+cd projectname                                      -- Go Into the ProjectFile
+python manage.py startapp appname                   -- Create the App
+python manage.py makemigrations                     -- Cria o arquivo de Migrações para o Banco de Dados
+python manage.py migrate                            -- Aplica as Alterações dos Models.py no Banco de Dados
+set DJANGO_SETTINGS_MODULE=projectname.settings     -- 
+python manage.py createsuperuser                    -- Criar um super usuário

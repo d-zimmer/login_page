@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
+    token = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(unique=True)
 
     def __str__(self):

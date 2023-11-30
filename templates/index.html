@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="button" onclick="submitLoginForm()">Login</button>
+    </form>
+
+    <script>
+        function submitLoginForm() {
+            // Obtenha os valores do formulário
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Construa os dados para a solicitação POST
+            const postData = {
+                username: username,
+                password: password
+            };
+
+            // Faça a solicitação POST usando fetch API
+            fetch('http://127.0.0.1:8000/api/login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Examine a resposta do servidor
+                if (data.message === 'Login successful') {
+                    alert('Login successful!');  // Você pode redirecionar o usuário para outra página aqui
+                } else {
+                    alert('Login failed. Invalid credentials.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
